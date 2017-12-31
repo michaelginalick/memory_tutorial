@@ -29,13 +29,20 @@ button:focus {
   order: 1;
   cursor: pointer;
 }
- .wrapper {
+
+.wrapper {
   width: 600px;
-  display: grid;
   grid-template-columns: repeat(6, 100px);
   grid-gap: 10px;
-  margin-left: 15%;
+  margin-left: 10%;
+  display: grid;
  }
+
+.black_active {
+  color: black;
+  background: black;
+  transform: rotateY(180deg);
+}
 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}

@@ -1,0 +1,74 @@
+#app {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+input, button, select {
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+/*
+Color Palette:
+https://coolors.co/8bd096-91ccc8-f4f1b7-f2ee83-c1bf72
+
+Colors:
+floral-white:
+ - #FEFDFB;
+ - rgba(254, 253, 251, 1);
+eerie-black:
+ - #1E1E12;
+ - rgba(58, 41, 12, 1);
+jasper:
+ - #CE3D3D;
+ - rgba(0, 70, 81, 1);
+dark-sea-green: 
+ - #8BD096;
+ - rgba(130, 33, 82, 1);
+middle-blue-green:
+ - #91CCC8;
+ - rgba(176, 29, 80, 1);
+blond:
+ - #F4F1B7;
+ - rgba(57, 25, 96, 1);
+sunny:
+ - #F2EE83;
+ - rgba(58, 46, 95, 1);
+dark-khaki:
+ - #C1BF72;
+ - rgba(58, 41, 76, 1);
+*/

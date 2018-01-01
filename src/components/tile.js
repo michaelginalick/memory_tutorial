@@ -34,6 +34,11 @@
         type: Array,
         required: true
       },
+
+      guesses: {
+        type: Array,
+        required: true
+      },
     },
 
     methods: {
@@ -67,11 +72,13 @@
       },
 
       handleClick(tile) {
-        tile.showFace = true
-        
-        setTimeout(function() {
-          tile.showFace = false
-        }, 2000)
+        if(tile.matched === true || !this.verifyNonDuplicateGuess(tile)) {return}
+        this.$emit("compare-matches", tile)
+      },
+
+      verifyNonDuplicateGuess(tile) {
+        if(this.guesses.length === 1 && this.guesses[0].id === tile.id ){ return false }
+        return true
       },
 
     }

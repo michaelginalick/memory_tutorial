@@ -6,7 +6,7 @@
         v-bind:class="{black_active: !tile.showFace }"
         class="box"
          @click="handleClick(tile)">
-          {{tile.id}}
+          {{tile.face.name}}
       </div>
     </div>
   `
@@ -40,10 +40,30 @@
       populateBoard() {
 
         for(let i = 0; i <= ((this.matchingOptions.length*2)-1); i++) {
-          this.tiles.push({id: i, showFace: false, matched: false })
+          this.tiles.push({id: i, showFace: false, matched: false, face: this.getRandomElement() })
         }
 
         return this.tiles
+      },
+
+      getRandomElement() {
+
+        let pairs = this.matchingOptions.filter(object => object.pairs >= 1)
+        pairs = this.shuffleArray(pairs)
+        let item = pairs[Math.floor(Math.random() * pairs.length)]
+        this.itemToDecrement(item)
+
+        return item
+      },
+
+      shuffleArray(array) {
+        return _.shuffle(array)
+      },
+
+      itemToDecrement(item) {
+        let decrementItem = this.matchingOptions.find(object => object.name === item.name)
+
+        return this.matchingOptions[decrementItem.pairs-=1]
       },
 
       handleClick(tile) {
@@ -52,7 +72,8 @@
         setTimeout(function() {
           tile.showFace = false
         }, 2000)
-      }
+      },
+
     }
 
   })

@@ -1,13 +1,7 @@
 ((() => {
   const html = `
-    <div class="wrapper">
-      <div v-for="(tile, index) in tiles" 
-        v-bind:key="tile.id" 
-        v-bind:class="{black_active: !tile.showFace }"
-        class="box"
-         @click="handleClick(tile)">
-          {{tile.id}}
-      </div>
+    <div>
+      <tile :tiles="tiles" :matchingOptions="matchingOptions"></tile>
     </div>
   `
 
@@ -17,25 +11,22 @@
     data() {
       return {
         tiles: [],
+        matchingOptions: [
+          {name: "Rails", pairs: 2},
+          {name: "PHP", pairs: 2},
+          {name: "Node", pairs: 2},
+          {name: "React", pairs: 2},
+          {name: "GoLang", pairs: 2},
+          {name: "Lisp", pairs: 2},
+          {name: "Perl", pairs: 2},
+          {name: "Java", pairs: 2},
+          {name: "C++", pairs: 2},
+          {name: "C", pairs: 2},
+          {name: "Ruby", pairs: 2},
+          {name: "Python", pairs: 2},
+        ],
       }
     },
-
-    mounted() {
-      this.populateBoard()
-    },
-
-
-    methods: {
-      populateBoard() {
-        for(let i = 0; i <= 23; i++) {
-          this.tiles.push({id: i, showFace: false})
-        }
-      },
-
-      handleClick(tile) {
-        tile.showFace = true
-      }
-    }
 
   })
 }))()

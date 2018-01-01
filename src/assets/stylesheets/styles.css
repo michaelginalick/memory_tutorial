@@ -28,6 +28,7 @@ button:focus {
   font-size: 150%;
   order: 1;
   cursor: pointer;
+  font-size: 125%;
 }
 
 .wrapper {

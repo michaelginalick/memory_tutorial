@@ -29,6 +29,7 @@ button:focus {
   order: 1;
   cursor: pointer;
   font-size: 125%;
+  transition: all .4s ease;
 }
 
 .wrapper {

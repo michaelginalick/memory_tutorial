@@ -1,6 +1,15 @@
 ((() => {
   const html = `
     <div>
+      <div id="myModal" class="modal" v-if="matchesLeft == 0">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span>You win!</span><br>
+           <input type="button" class="close" value="Play Again!" v-on:click="resetGame()"">
+        </div>
+      </div>
+       <h1 style="margin-right:25%;">ROUND {{ level }}</h1>
+       <h1 style="margin-right:25%;">Matches to go {{ matchesLeft }}</h1>
       <tile :tiles="tiles" 
         :guesses="guesses"
         :matchingOptions="matchingOptions" 
@@ -30,7 +39,22 @@
           {name: "Python", pairs: 2},
         ],
         guesses: [],
-        clickCount: 0
+        clickCount: 0,
+        level: 1
+      }
+    },
+
+    computed: {
+      matchesLeft() {
+        let matchesRemaining = 0
+        let tilesLength = this.tiles.length
+
+        for(let i = 0; i < tilesLength; i++) {
+          if (this.tiles[i].matched == true) {
+            ++matchesRemaining
+          }
+        }
+        return ((tilesLength-matchesRemaining)/2)
       }
     },
 
@@ -63,7 +87,7 @@
       resetRound() {
         this.clickCount = 0
         this.guesses = []
-
+        ++this.level
         for(let i = 0; i < this.tiles.length; i++) {
           let tile = this.tiles[i]
 
@@ -71,6 +95,21 @@
             this.tiles[i].showFace = false
           }
         }
+      },
+
+      resetGame() {
+
+        this.clickCount = 0
+        this.round = 1
+        this.guesses = []
+
+        for(let i = 0; i < this.tiles.length; i++) {
+          let tile = this.tiles[i]
+
+          tile.showFace = false
+          tile.matched = false
+        }
+
       },
     }
 

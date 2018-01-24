@@ -10,9 +10,9 @@
       </div>
        <h1 style="margin-right:25%;">ROUND {{ level }}</h1>
        <h1 style="margin-right:25%;">Matches to go {{ matchesLeft }}</h1>
-      <tile :tiles="tiles" 
+      <tile :tiles="tiles"
         :guesses="guesses"
-        :matchingOptions="matchingOptions" 
+        :matchingOptions="matchingOptions"
         @compare-matches="handleClickEventFromChild">
       </tile>
     </div>
@@ -100,15 +100,12 @@
       resetGame() {
 
         this.clickCount = 0
-        this.round = 1
+        this.matchingOptions.forEach(function(element){
+            element.pairs = 2;
+        });
+        this.level = 1
         this.guesses = []
-
-        for(let i = 0; i < this.tiles.length; i++) {
-          let tile = this.tiles[i]
-
-          tile.showFace = false
-          tile.matched = false
-        }
+        this.tiles = []
 
       },
     }

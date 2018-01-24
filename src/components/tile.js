@@ -1,8 +1,8 @@
 ((() => {
   const html = `
     <div class="wrapper">
-      <div v-for="(tile, index) in tiles" 
-        v-bind:key="tile.id" 
+      <div v-for="(tile, index) in tiles"
+        v-bind:key="tile.id"
         v-bind:class="{black_active: !tile.showFace }"
         class="box"
          @click="handleClick(tile)">
@@ -16,7 +16,7 @@
 
     data() {
       return {
-        
+
       }
     },
 
@@ -81,6 +81,13 @@
         return true
       },
 
+    },
+    watch: {
+      tiles: function (value){
+          if (value.length == 0) {
+            this.populateBoard();
+          }
+      }
     }
 
   })
